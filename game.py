@@ -83,11 +83,11 @@ class Window(pyglet.window.Window):
                                    self.gates[self.car.next_gate].x, self.gates[self.car.next_gate].y,
                                    self.gates[self.car.next_gate].x2, self.gates[self.car.next_gate].y2):
                 self.car.next_gate += 1
-
-                delta_t = utils.float_time() - self.car.arrival_time
-                if delta_t != 0:
-                    self.car.score += 3/delta_t
-                self.car.arrival_time = utils.float_time()
+                self.car.score += 1
+                # delta_t = utils.float_time() - self.car.arrival_time
+                # if delta_t != 0:
+                #     self.car.score += 3/delta_t
+                # self.car.arrival_time = utils.float_time()
 
                 print("score : {}".format(self.car.score))
                 if self.car.next_gate == (len(self.gates)):
