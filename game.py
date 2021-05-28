@@ -59,9 +59,6 @@ class Window(pyglet.window.Window):
     def update(self, dt):
         self.car.move()
         self.detect_collisions()
-        if self.car.dead:
-            print("end")
-            pyglet.app.exit()
         # self.detect_wall_distances()
         # print(self.detect_wall_distances())
 
@@ -86,9 +83,13 @@ class Window(pyglet.window.Window):
                                    self.gates[self.car.next_gate].x, self.gates[self.car.next_gate].y,
                                    self.gates[self.car.next_gate].x2, self.gates[self.car.next_gate].y2):
                 self.car.next_gate += 1
-                self.car.score += 3/(utils.float_time() - self.car.arrival_time)
+
+                delta_t = utils.float_time() - self.car.arrival_time
+                if delta_t != 0:
+                    self.car.score += 3/delta_t
                 self.car.arrival_time = utils.float_time()
-                # print(self.car.score)
+
+                print("score : {}".format(self.car.score))
                 if self.car.next_gate == (len(self.gates)):
                     self.car.next_gate = 0
 
@@ -96,7 +97,8 @@ class Window(pyglet.window.Window):
                 if utils.lines_collide(wall.x, wall.y, wall.x2, wall.y2,
                                        car_corners[i].x, car_corners[i].y, car_corners[j].x, car_corners[j].y):
                     self.car.dead = True
-                    print("ouch")
+                    self.car.reset()
+                    # print("ouch")
 
     def detect_wall_distances(self):
         distances = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]

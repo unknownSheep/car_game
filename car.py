@@ -66,3 +66,17 @@ class Car (pyglet.sprite.Sprite):
 
         self.x += self.vel * self.direction.y
         self.y += self.vel * self.direction.x
+
+    def reset(self):
+        self.x = 172
+        self.y = 872
+
+        self.next_gate = 0
+        self.arrival_time = utils.float_time()
+        self.score = 0
+        self.dead = False
+
+        self.vel = 0
+        self.acceleration = 0
+        self.direction = vec2(0, 1)
+        self.update(rotation=-self.direction.angle_to(reference_vec))
