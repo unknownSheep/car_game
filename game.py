@@ -59,7 +59,7 @@ class Window(pyglet.window.Window):
     def update(self, dt):
         self.car.move()
         self.detect_collisions()
-        # self.detect_wall_distances()
+        self.detect_wall_distances()
         # print(self.detect_wall_distances())
 
     def detect_collisions(self):
@@ -106,7 +106,7 @@ class Window(pyglet.window.Window):
         player_pos_vec = vec2(self.car.y, self.car.x)
         i = 0
         for a in rotation_angles:
-            line_vec = self.car.direction.rotate(a) * 150 + player_pos_vec
+            line_vec = self.car.direction.rotate(a) * self.car.antennas_len + player_pos_vec
             line = pyglet.shapes.Line(self.car.x, self.car.y, line_vec.y, line_vec.x, 2, color=(86, 86, 86),
                                       batch=self.batch)
             self.car.antennas[i] = line

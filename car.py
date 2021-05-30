@@ -15,6 +15,7 @@ class Car (pyglet.sprite.Sprite):
         self.arrival_time = utils.float_time()
         self.score = 0
         self.dead = False
+        self.antennas_len = 300
 
         self.vel = 0
         self.hitbox = []
