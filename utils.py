@@ -30,7 +30,7 @@ def float_time():
     now_str = str(now_time)
     now_array = now_str.split(':')
     h = float(now_array[0])
-    min = float(now_array[1])
+    minutes = float(now_array[1])
     sec = float(now_array[2])
-    total = 3600*h + 60*min + sec
+    total = 3600 * h + 60 * minutes + sec
     return total

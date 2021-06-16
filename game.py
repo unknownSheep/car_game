@@ -96,7 +96,7 @@ class Window(pyglet.window.Window):
             for wall in self.walls:
                 if utils.lines_collide(wall.x, wall.y, wall.x2, wall.y2,
                                        car_corners[i].x, car_corners[i].y, car_corners[j].x, car_corners[j].y):
-                    self.car.dead = True
+                    # self.car.dead = True
                     # self.car.reset()
                     self.car.score -= 2
                     self.reset()
