@@ -26,6 +26,9 @@ class Window(pyglet.window.Window):
         self.car = car.Car(img=car_image, x=172, y=872, batch=self.batch)
         self.walls, self.gates = self.generate_terrain()
 
+        self.score_label = pyglet.text.Label('score : ' + str(self.car.score), font_size=22,
+                                             x=self.width - 150, y=self.height - 25, batch=self.batch)
+
     def generate_terrain(self):
         walls = []
         gates = []
@@ -57,9 +60,10 @@ class Window(pyglet.window.Window):
         return walls, gates
 
     def update(self, dt):
+        self.score_label_update()
         self.car.move()
         self.detect_collisions()
-        # self.detect_wall_distances()
+        self.detect_wall_distances()
         # print(self.detect_wall_distances())
 
     def detect_collisions(self):
@@ -125,6 +129,9 @@ class Window(pyglet.window.Window):
                                           self.car.x, self.car.y)
             c += 1
         # return distances
+
+    def score_label_update(self):
+        self.score_label.text = 'Score : ' + str(self.car.score)
 
     def reset(self):
         self.car.reset()
