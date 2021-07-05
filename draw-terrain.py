@@ -4,7 +4,7 @@ import os
 vec2 = pygame.math.Vector2
 
 # os.remove("assets/terrain.map")
-# os.remove("assets/gates.map")
+# os.remove("assets/hard.map")
 
 
 class Window(pyglet.window.Window):
