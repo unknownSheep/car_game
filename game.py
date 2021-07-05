@@ -112,7 +112,7 @@ class Window(pyglet.window.Window):
         player_pos_vec = vec2(self.car.y, self.car.x)
         i = 0
         for a in rotation_angles:
-            line_vec = self.car.direction.rotate(a) * 150 + player_pos_vec
+            line_vec = self.car.direction.rotate(a) * 500 + player_pos_vec          # TODO: change here the lenght
             line = pyglet.shapes.Line(self.car.x, self.car.y, line_vec.y, line_vec.x, 2, color=(86, 86, 86),
                                       batch=self.batch)
             self.car.antennas[i] = line
